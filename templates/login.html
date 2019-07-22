@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>登录</title>
+{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/static/js/gt.js"></script>
+    <style>
+    body{
+        background-color:#555;
+    }
+    </style>
+{% endblock  %}
+{% block content %}
+    <div class="container">
+    <h1 style="text-align:center">登录</h1>
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2" style="margin-top:10px">
+                <form class="form-horizontal" role="form" method="post" action="/ljq/login">
+                {% csrf_token %}
+                    <div class="form-group" style="margin-bottom:20px">
+                        <label for="lastname" class="col-sm-4 control-label">邮箱</label>
+                        <div class="col-sm-5">
+                        <input type="text" class="form-control" id="email" placeholder="请输入邮箱" name="email" value="{{ login_email }}">
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom:20px">
+                        <label for="firstname" class="col-sm-4 control-label">密码</label>
+                        <div class="col-sm-5">
+                        <input type="password" class="form-control" id="pwd" placeholder="请输入密码" name="pwd" value="">
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom:20px">
+                    <label for="lastname" class="col-sm-4 control-label">验证</label>
+                        <div class="col-sm-5">
+                            <div id="jy_code"></div>
+                        </div>
+                    </div>
+                    <div class="geetest_form" hidden=true>
+                        <input type="hidden" name="geetest_challenge">
+                        <input type="hidden" name="geetest_validate">
+                        <input type="hidden" name="geetest_seccode">
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-5 col-sm-offset-4">
+                            <a href="http://127.0.0.1:8000/ljq/register/" style="font-size:18px;line-height:2.5;text-decoration:none;">没有账户去注册</a>
+                            <button type="submit"class="btn btn-primary pull-right" style="border-radius:4px;">登录</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <script>
+                $(function(){
+                    $.get("/ljq/check_code/",{},function(res){
+                        console.log(res)
+                        let data = JSON.parse(res);
+                        initGeetest({
+                            gt: data.gt,
+                            challenge: data.challenge,
+                            offline: !data.success,
+                            new_captcha: true,
+                            product: 'popup',
+                            width: '100%',
+                        },function(captchaObj){
+                            captchaObj.appendTo("#jy_code")
+                            captchaObj.onSuccess(function(){
+                                var result = captchaObj.getValidate()
+                                console.log(result)
+                                $("input[name='geetest_challenge']").val(result.geetest_challenge)
+                                $("input[name='geetest_validate']").val(result.geetest_validate)
+                                $("input[name='geetest_seccode']").val(result.geetest_seccode)
+                            })
+                        })
+                    })
+                })
+                $(function(){
+                    {% if login_status %}
+                    var login_status = {{ login_status }}
+                    if(login_status==1){
+                        alert("请完成验证码验证")
+                        return false
+                    }else if(login_status==2){
+                        alert("信息不匹配")
+                        return false
+                    }else if(login_status==3){
+                        alert("请填写完整账户信息")
+                        return false
+                    }else{
+                        alert("账户未激活")
+                        return false
+                    }
+                    {% endif %}
+                })
+            </script>
+        </div>
+    </div>
+{% endblock content %}
+{% block footer %}
+ <footer class="footer"  style="position:relative;bottom:-90px;border-top:none">
+        <div class="footer-inner">
+            <div class="copyright pull-left">
+                <a href="https://cuiqingcai.com " title="静觅">静觅</a> 版权所有丨采用
+                <a href="http://yusi123.com/"> 欲思 </a>主题丨基于
+                <a href="http://cn.wordpress.org/" title="WordPress"> WordPress </a>构建   © 2019丨托管于
+                <a rel="nofollow" target="_blank" href="https://cloud.tencent.com/">腾讯云主机</a> &
+                <a rel="nofollow" target="_blank" href="https://www.qiniu.com/">七牛云存储 </a>丨京ICP备18015597号-1
+                <div>
+                    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1253486800'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1253486800%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+                </div>
+            </div>
+        </div>
+</footer>
+{% endblock %}
+{% block search_ %}         
+    <li style="float:right;">
+        <div id="hello">
+            <form method="get" style="height:40px" id="saerch_form" action="{% url 'ljq:search' %}"><input id="saerch_text" type="text" name="q" style="height:50px"><input type="submit" value="搜索" id="search_btn" style="width:60px;height:50px"></form>
+        </div>
+        <script>
+            $(function(){
+                $("#saerch_form").on("submit",function(){
+                        var val1 = $("#saerch_text").val()
+                        if(val1 == ""){
+                            alert("请输入要查询的关键字")
+                            return false
+                        }
+                })
+            })
+        </script>
+    </li>
+{% endblock search_ %}

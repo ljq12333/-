@@ -1,0 +1,1507 @@
+﻿{% extends 'base.html' %}
+{% load humanize %}
+{% block title %}
+<title>胡继伟为什么变得帅多了</title>
+{% endblock %}
+{% block content %}
+<div class="content-wrap">
+    <div class="content">
+        <div class="breadcrumbs">
+            <a title="返回首页" href="http://127.0.0.1:8000/ljq/index.html/">
+                <i class="fa fa-home"></i>
+            </a>
+            <small>></small>
+            <a href="{{ article.category.bigcategory.nav_url }}">{{ article.category.bigcategory.name }}</a>
+            <small>></small>
+            <a href="{{ article.category.nav_url }}">{{ article.category.name }}</a>
+            <small>></small>
+            <span class="muted">{{ article.title }}</span>
+        </div>
+        <header class="article-header">
+            <h1 class="article-title">
+                <a href="{{ article.slug }}">{{ article.title }}</a>
+            </h1>
+            <div class="meta">
+                <span id="mute-category" class="muted">
+                    <i class="fa fa-list-alt"></i>
+                    <a href="{{ article.category.nav_url }}"> Python</a>
+                </span>
+                <span class="muted">
+                    <i class="fa fa-user"></i>
+                    <a href="javascript:;">{{ article.author.name }}</a>
+                </span>
+                <time class="muted">
+                    <i class="fa fa-clock-o"></i> {{ article.create_date|naturaltime }}
+                </time>
+                <span class="muted">
+                    <i class="fa fa-eye"></i> {{ article.views }}浏览
+                </span>
+                <span class="muted">
+                    <i class="fa fa-comments-o"></i>
+                    <a href="javascript:;">16评论</a>
+                </span>
+            </div>
+        </header>
+        <div class="banner banner-post">
+            <a href="https://edu.hellobi.com/course/157">
+                <img
+                    src="https://qiniu.cuiqingcai.com/wp-content/uploads/2017/04/横图：崔庆才-自己动手，丰衣足食！Python3网络爬虫实战案例.png" />
+            </a>
+            <script>
+                (function () {
+                    var bp = document.createElement('script');
+                    var curProtocol = window.location.protocol.split(':')[0];
+                    if (curProtocol === 'https') {
+                        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+                    } else {
+                        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+                    }
+                    var s = document.getElementsByTagName("script")[0];
+                    s.parentNode.insertBefore(bp, s);
+                })();
+            </script>
+        </div>
+        {{ article.body|safe }}
+        <div class="article-social">
+            <a href="javascript:;" data-action="ding" data-id="{{ article.id }}" id="Addlike" class="action">
+                <i class="fa fa-heart-o"></i>喜欢 (
+                <span class="count">{{ article.loves }}</span>)
+            </a>
+            <span class="or">or</span>
+            <span class="action action-share bdsharebuttonbox">
+                <i class="fa fa-share-alt"></i>分享 (
+                <span class="bds_count" data-cmd="count" title="累计分享0次">0</span>)
+                <div class="action-popover">
+                    <div class="popover top in">
+                        <div class="arrow"></div>
+                        <div class="popover-content">
+                            <a href="#" class="sinaweibo fa fa-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+                            <a href="#" class="bds_qzone fa fa-star" data-cmd="qzone" title="分享到QQ空间"></a>
+                            <a href="#" class="tencentweibo fa fa-tencent-weibo" data-cmd="tqq" title="分享到腾讯微博"></a>
+                            <a href="#" class="qq fa fa-qq" data-cmd="sqq" title="分享到QQ好友"></a>
+                            <a href="#" class="bds_renren fa fa-renren" data-cmd="renren" title="分享到人人网"></a>
+                            <a href="#" class="bds_weixin fa fa-weixin" data-cmd="weixin" title="分享到微信"></a>
+                            <a href="#" class="bds_more fa fa-ellipsis-h" data-cmd="more"></a>
+                        </div>
+                    </div>
+                </div>
+            </span>
+        </div>
+        </article>
+        <div class="">
+            <div id="qrcodes">
+                <div class="row">
+                            <div class="col-xs-12 col-md-4">
+                                <div class="p-sm" style="overflow: hidden; padding-bottom: 15px;">
+                                    <p class="text-center">我的个人微信公众号，欢迎关注</p>
+                                    <p class="text-center">扫码或搜索：强哥的日常</p>
+                                    <div class="text-center">
+                                    
+                                       <img class="code-img" src="/static/picture/qrcode_for_gh_fa380f871a83_258.jpg" />
+                                    </div>
+                                    <div class="text-center">
+                                        <p style="color: #e9415a; font-size: 15px;">强哥的日常</p>
+                                        <p><span>微信公众号 </span><span style="color: #e9415a; font-size: 15px; margin-bottom: 45px;">扫一扫关注</span></p>
+                                    </div>
+                                    </p>
+                                </div>
+                                </p>
+                            </div>
+                            <div class="col-xs-12 col-md-4">
+                                <div class="p-sm" style="overflow: hidden; padding-bottom: 15px;">
+                                    <p class="text-center">想接私活提高自己的编程水平</p>
+                                    <p class="text-center">赶紧加入我们的程序代写群吧</p>
+                                    <div class="text-center">
+                                        <img class="code-img" src="/static/picture/qrcode1.png" />
+                                    </div>
+                                    <div class="text-center">
+                                        <p style="color: #e9415a; font-size: 15px;">程序代写群</p>
+                                        <p> <span>QQ群号 </span><span
+                                                style="color: #e9415a; font-size: 15px; margin-bottom: 45px;"> 419574580
+                                            </span>
+                                            <a class="btn btn-xs btn-danger"
+                                                href="http://shang.qq.com/wpa/qunwpa?idkey=cf26d7e4601e22bce84ef264120aad330a30515f1694586c3a1283558ac82c1e"
+                                                target="_blank">立即加入</a></p>
+                                    </div>
+                                    </p>
+                                </div>
+                                </p>
+                            </div>
+                            <div class="col-xs-12 col-md-4">
+                                <div class="p-sm" style="overflow: hidden; padding-bottom: 15px;">
+                                    <p class="text-center">博主的个人QQ号</p>
+                                    <p class="text-center">专注技术交流, 一同成长进步</p>
+                                    <div class="text-center">
+                                        <img class="code-img" src="/static/picture/qrcode2.png" />
+                                    </div>
+                                    <div class="text-center">
+                                        <p style="color: #18A57D; font-size: 15px;">12333li</p>
+                                        <p> <span>QQ号 </span><span
+                                                style="color: #18A57D; font-size: 15px; margin-bottom: 45px;"> 1905673854
+                                            </span>
+                                            <a target="_blank" class="btn btn-xs"
+                                                style="background-color: #18A57D"
+                                                href="http://shang.qq.com/wpa/qunwpa?idkey=458ed3cac481d099e709ccb14ef3ac61a539a88449a4992ffd03ee8821030622">立即加入</a>
+                                        </p>
+                                    </div>
+                                    </p>
+                                </div>
+                                </p>
+                            </div>
+                            </p>
+                        </div>
+            </div>
+            <style>
+                #qrcodes {
+                    min-height: 350px;
+                    background: white;
+                }
+
+                #qrcodes .btn {
+                    background-color: #eb586f;
+                    height: 22px;
+                    line-height: 22px !important;
+                    font-size: 12px;
+                    color: white;
+                    padding: initial;
+                    font-size: 12px;
+                    width: 65px;
+                }
+
+                .article-content #qrcodes {
+                    text-indent: 0px !important;
+                }
+
+                .article-content #qrcodes a {
+                    color: white;
+                }
+
+                #qrcodes .btn:hover {
+                    color: white;
+                }
+
+                #qrcodes .code-img {
+                    width: 180px;
+                }
+            </style>
+            <style>
+                #qrcodes * {
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+                }
+
+                *:before,
+                *:after {
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+                }
+
+                .row {
+                    margin-right: -15px;
+                    margin-left: -15px;
+                }
+
+                .col-xs-1,
+                .col-sm-1,
+                .col-md-1,
+                .col-lg-1,
+                .col-xs-2,
+                .col-sm-2,
+                .col-md-2,
+                .col-lg-2,
+                .col-xs-3,
+                .col-sm-3,
+                .col-md-3,
+                .col-lg-3,
+                .col-xs-4,
+                .col-sm-4,
+                .col-md-4,
+                .col-lg-4,
+                .col-xs-5,
+                .col-sm-5,
+                .col-md-5,
+                .col-lg-5,
+                .col-xs-6,
+                .col-sm-6,
+                .col-md-6,
+                .col-lg-6,
+                .col-xs-7,
+                .col-sm-7,
+                .col-md-7,
+                .col-lg-7,
+                .col-xs-8,
+                .col-sm-8,
+                .col-md-8,
+                .col-lg-8,
+                .col-xs-9,
+                .col-sm-9,
+                .col-md-9,
+                .col-lg-9,
+                .col-xs-10,
+                .col-sm-10,
+                .col-md-10,
+                .col-lg-10,
+                .col-xs-11,
+                .col-sm-11,
+                .col-md-11,
+                .col-lg-11,
+                .col-xs-12,
+                .col-sm-12,
+                .col-md-12,
+                .col-lg-12 {
+                    position: relative;
+                    min-height: 1px;
+                    padding-right: 15px;
+                    padding-left: 15px;
+                }
+
+                .col-xs-1,
+                .col-xs-2,
+                .col-xs-3,
+                .col-xs-4,
+                .col-xs-5,
+                .col-xs-6,
+                .col-xs-7,
+                .col-xs-8,
+                .col-xs-9,
+                .col-xs-10,
+                .col-xs-11,
+                .col-xs-12 {
+                    float: left;
+                }
+
+                .col-xs-12 {
+                    width: 100%;
+                }
+
+                .col-xs-11 {
+                    width: 91.66666667%;
+                }
+
+                .col-xs-10 {
+                    width: 83.33333333%;
+                }
+
+                .col-xs-9 {
+                    width: 75%;
+                }
+
+                .col-xs-8 {
+                    width: 66.66666667%;
+                }
+
+                .col-xs-7 {
+                    width: 58.33333333%;
+                }
+
+                .col-xs-6 {
+                    width: 50%;
+                }
+
+                .col-xs-5 {
+                    width: 41.66666667%;
+                }
+
+                .col-xs-4 {
+                    width: 33.33333333%;
+                }
+
+                .col-xs-3 {
+                    width: 25%;
+                }
+
+                .col-xs-2 {
+                    width: 16.66666667%;
+                }
+
+                .col-xs-1 {
+                    width: 8.33333333%;
+                }
+
+                .col-xs-pull-12 {
+                    right: 100%;
+                }
+
+                .col-xs-pull-11 {
+                    right: 91.66666667%;
+                }
+
+                .col-xs-pull-10 {
+                    right: 83.33333333%;
+                }
+
+                .col-xs-pull-9 {
+                    right: 75%;
+                }
+
+                .col-xs-pull-8 {
+                    right: 66.66666667%;
+                }
+
+                .col-xs-pull-7 {
+                    right: 58.33333333%;
+                }
+
+                .col-xs-pull-6 {
+                    right: 50%;
+                }
+
+                .col-xs-pull-5 {
+                    right: 41.66666667%;
+                }
+
+                .col-xs-pull-4 {
+                    right: 33.33333333%;
+                }
+
+                .col-xs-pull-3 {
+                    right: 25%;
+                }
+
+                .col-xs-pull-2 {
+                    right: 16.66666667%;
+                }
+
+                .col-xs-pull-1 {
+                    right: 8.33333333%;
+                }
+
+                .col-xs-pull-0 {
+                    right: auto;
+                }
+
+                .col-xs-push-12 {
+                    left: 100%;
+                }
+
+                .col-xs-push-11 {
+                    left: 91.66666667%;
+                }
+
+                .col-xs-push-10 {
+                    left: 83.33333333%;
+                }
+
+                .col-xs-push-9 {
+                    left: 75%;
+                }
+
+                .col-xs-push-8 {
+                    left: 66.66666667%;
+                }
+
+                .col-xs-push-7 {
+                    left: 58.33333333%;
+                }
+
+                .col-xs-push-6 {
+                    left: 50%;
+                }
+
+                .col-xs-push-5 {
+                    left: 41.66666667%;
+                }
+
+                .col-xs-push-4 {
+                    left: 33.33333333%;
+                }
+
+                .col-xs-push-3 {
+                    left: 25%;
+                }
+
+                .col-xs-push-2 {
+                    left: 16.66666667%;
+                }
+
+                .col-xs-push-1 {
+                    left: 8.33333333%;
+                }
+
+                .col-xs-push-0 {
+                    left: auto;
+                }
+
+                .col-xs-offset-12 {
+                    margin-left: 100%;
+                }
+
+                .col-xs-offset-11 {
+                    margin-left: 91.66666667%;
+                }
+
+                .col-xs-offset-10 {
+                    margin-left: 83.33333333%;
+                }
+
+                .col-xs-offset-9 {
+                    margin-left: 75%;
+                }
+
+                .col-xs-offset-8 {
+                    margin-left: 66.66666667%;
+                }
+
+                .col-xs-offset-7 {
+                    margin-left: 58.33333333%;
+                }
+
+                .col-xs-offset-6 {
+                    margin-left: 50%;
+                }
+
+                .col-xs-offset-5 {
+                    margin-left: 41.66666667%;
+                }
+
+                .col-xs-offset-4 {
+                    margin-left: 33.33333333%;
+                }
+
+                .col-xs-offset-3 {
+                    margin-left: 25%;
+                }
+
+                .col-xs-offset-2 {
+                    margin-left: 16.66666667%;
+                }
+
+                .col-xs-offset-1 {
+                    margin-left: 8.33333333%;
+                }
+
+                .col-xs-offset-0 {
+                    margin-left: 0;
+                }
+
+                @media (min-width: 768px) {
+
+                    .col-sm-1,
+                    .col-sm-2,
+                    .col-sm-3,
+                    .col-sm-4,
+                    .col-sm-5,
+                    .col-sm-6,
+                    .col-sm-7,
+                    .col-sm-8,
+                    .col-sm-9,
+                    .col-sm-10,
+                    .col-sm-11,
+                    .col-sm-12 {
+                        float: left;
+                    }
+
+                    .col-sm-12 {
+                        width: 100%;
+                    }
+
+                    .col-sm-11 {
+                        width: 91.66666667%;
+                    }
+
+                    .col-sm-10 {
+                        width: 83.33333333%;
+                    }
+
+                    .col-sm-9 {
+                        width: 75%;
+                    }
+
+                    .col-sm-8 {
+                        width: 66.66666667%;
+                    }
+
+                    .col-sm-7 {
+                        width: 58.33333333%;
+                    }
+
+                    .col-sm-6 {
+                        width: 50%;
+                    }
+
+                    .col-sm-5 {
+                        width: 41.66666667%;
+                    }
+
+                    .col-sm-4 {
+                        width: 33.33333333%;
+                    }
+
+                    .col-sm-3 {
+                        width: 25%;
+                    }
+
+                    .col-sm-2 {
+                        width: 16.66666667%;
+                    }
+
+                    .col-sm-1 {
+                        width: 8.33333333%;
+                    }
+
+                    .col-sm-pull-12 {
+                        right: 100%;
+                    }
+
+                    .col-sm-pull-11 {
+                        right: 91.66666667%;
+                    }
+
+                    .col-sm-pull-10 {
+                        right: 83.33333333%;
+                    }
+
+                    .col-sm-pull-9 {
+                        right: 75%;
+                    }
+
+                    .col-sm-pull-8 {
+                        right: 66.66666667%;
+                    }
+
+                    .col-sm-pull-7 {
+                        right: 58.33333333%;
+                    }
+
+                    .col-sm-pull-6 {
+                        right: 50%;
+                    }
+
+                    .col-sm-pull-5 {
+                        right: 41.66666667%;
+                    }
+
+                    .col-sm-pull-4 {
+                        right: 33.33333333%;
+                    }
+
+                    .col-sm-pull-3 {
+                        right: 25%;
+                    }
+
+                    .col-sm-pull-2 {
+                        right: 16.66666667%;
+                    }
+
+                    .col-sm-pull-1 {
+                        right: 8.33333333%;
+                    }
+
+                    .col-sm-pull-0 {
+                        right: auto;
+                    }
+
+                    .col-sm-push-12 {
+                        left: 100%;
+                    }
+
+                    .col-sm-push-11 {
+                        left: 91.66666667%;
+                    }
+
+                    .col-sm-push-10 {
+                        left: 83.33333333%;
+                    }
+
+                    .col-sm-push-9 {
+                        left: 75%;
+                    }
+
+                    .col-sm-push-8 {
+                        left: 66.66666667%;
+                    }
+
+                    .col-sm-push-7 {
+                        left: 58.33333333%;
+                    }
+
+                    .col-sm-push-6 {
+                        left: 50%;
+                    }
+
+                    .col-sm-push-5 {
+                        left: 41.66666667%;
+                    }
+
+                    .col-sm-push-4 {
+                        left: 33.33333333%;
+                    }
+
+                    .col-sm-push-3 {
+                        left: 25%;
+                    }
+
+                    .col-sm-push-2 {
+                        left: 16.66666667%;
+                    }
+
+                    .col-sm-push-1 {
+                        left: 8.33333333%;
+                    }
+
+                    .col-sm-push-0 {
+                        left: auto;
+                    }
+
+                    .col-sm-offset-12 {
+                        margin-left: 100%;
+                    }
+
+                    .col-sm-offset-11 {
+                        margin-left: 91.66666667%;
+                    }
+
+                    .col-sm-offset-10 {
+                        margin-left: 83.33333333%;
+                    }
+
+                    .col-sm-offset-9 {
+                        margin-left: 75%;
+                    }
+
+                    .col-sm-offset-8 {
+                        margin-left: 66.66666667%;
+                    }
+
+                    .col-sm-offset-7 {
+                        margin-left: 58.33333333%;
+                    }
+
+                    .col-sm-offset-6 {
+                        margin-left: 50%;
+                    }
+
+                    .col-sm-offset-5 {
+                        margin-left: 41.66666667%;
+                    }
+
+                    .col-sm-offset-4 {
+                        margin-left: 33.33333333%;
+                    }
+
+                    .col-sm-offset-3 {
+                        margin-left: 25%;
+                    }
+
+                    .col-sm-offset-2 {
+                        margin-left: 16.66666667%;
+                    }
+
+                    .col-sm-offset-1 {
+                        margin-left: 8.33333333%;
+                    }
+
+                    .col-sm-offset-0 {
+                        margin-left: 0;
+                    }
+                }
+
+                @media (min-width: 992px) {
+
+                    .col-md-1,
+                    .col-md-2,
+                    .col-md-3,
+                    .col-md-4,
+                    .col-md-5,
+                    .col-md-6,
+                    .col-md-7,
+                    .col-md-8,
+                    .col-md-9,
+                    .col-md-10,
+                    .col-md-11,
+                    .col-md-12 {
+                        float: left;
+                    }
+
+                    .col-md-12 {
+                        width: 100%;
+                    }
+
+                    .col-md-11 {
+                        width: 91.66666667%;
+                    }
+
+                    .col-md-10 {
+                        width: 83.33333333%;
+                    }
+
+                    .col-md-9 {
+                        width: 75%;
+                    }
+
+                    .col-md-8 {
+                        width: 66.66666667%;
+                    }
+
+                    .col-md-7 {
+                        width: 58.33333333%;
+                    }
+
+                    .col-md-6 {
+                        width: 50%;
+                    }
+
+                    .col-md-5 {
+                        width: 41.66666667%;
+                    }
+
+                    .col-md-4 {
+                        width: 33.33333333%;
+                    }
+
+                    .col-md-3 {
+                        width: 25%;
+                    }
+
+                    .col-md-2 {
+                        width: 16.66666667%;
+                    }
+
+                    .col-md-1 {
+                        width: 8.33333333%;
+                    }
+
+                    .col-md-pull-12 {
+                        right: 100%;
+                    }
+
+                    .col-md-pull-11 {
+                        right: 91.66666667%;
+                    }
+
+                    .col-md-pull-10 {
+                        right: 83.33333333%;
+                    }
+
+                    .col-md-pull-9 {
+                        right: 75%;
+                    }
+
+                    .col-md-pull-8 {
+                        right: 66.66666667%;
+                    }
+
+                    .col-md-pull-7 {
+                        right: 58.33333333%;
+                    }
+
+                    .col-md-pull-6 {
+                        right: 50%;
+                    }
+
+                    .col-md-pull-5 {
+                        right: 41.66666667%;
+                    }
+
+                    .col-md-pull-4 {
+                        right: 33.33333333%;
+                    }
+
+                    .col-md-pull-3 {
+                        right: 25%;
+                    }
+
+                    .col-md-pull-2 {
+                        right: 16.66666667%;
+                    }
+
+                    .col-md-pull-1 {
+                        right: 8.33333333%;
+                    }
+
+                    .col-md-pull-0 {
+                        right: auto;
+                    }
+
+                    .col-md-push-12 {
+                        left: 100%;
+                    }
+
+                    .col-md-push-11 {
+                        left: 91.66666667%;
+                    }
+
+                    .col-md-push-10 {
+                        left: 83.33333333%;
+                    }
+
+                    .col-md-push-9 {
+                        left: 75%;
+                    }
+
+                    .col-md-push-8 {
+                        left: 66.66666667%;
+                    }
+
+                    .col-md-push-7 {
+                        left: 58.33333333%;
+                    }
+
+                    .col-md-push-6 {
+                        left: 50%;
+                    }
+
+                    .col-md-push-5 {
+                        left: 41.66666667%;
+                    }
+
+                    .col-md-push-4 {
+                        left: 33.33333333%;
+                    }
+
+                    .col-md-push-3 {
+                        left: 25%;
+                    }
+
+                    .col-md-push-2 {
+                        left: 16.66666667%;
+                    }
+
+                    .col-md-push-1 {
+                        left: 8.33333333%;
+                    }
+
+                    .col-md-push-0 {
+                        left: auto;
+                    }
+
+                    .col-md-offset-12 {
+                        margin-left: 100%;
+                    }
+
+                    .col-md-offset-11 {
+                        margin-left: 91.66666667%;
+                    }
+
+                    .col-md-offset-10 {
+                        margin-left: 83.33333333%;
+                    }
+
+                    .col-md-offset-9 {
+                        margin-left: 75%;
+                    }
+
+                    .col-md-offset-8 {
+                        margin-left: 66.66666667%;
+                    }
+
+                    .col-md-offset-7 {
+                        margin-left: 58.33333333%;
+                    }
+
+                    .col-md-offset-6 {
+                        margin-left: 50%;
+                    }
+
+                    .col-md-offset-5 {
+                        margin-left: 41.66666667%;
+                    }
+
+                    .col-md-offset-4 {
+                        margin-left: 33.33333333%;
+                    }
+
+                    .col-md-offset-3 {
+                        margin-left: 25%;
+                    }
+
+                    .col-md-offset-2 {
+                        margin-left: 16.66666667%;
+                    }
+
+                    .col-md-offset-1 {
+                        margin-left: 8.33333333%;
+                    }
+
+                    .col-md-offset-0 {
+                        margin-left: 0;
+                    }
+                }
+
+                @media (min-width: 1200px) {
+
+                    .col-lg-1,
+                    .col-lg-2,
+                    .col-lg-3,
+                    .col-lg-4,
+                    .col-lg-5,
+                    .col-lg-6,
+                    .col-lg-7,
+                    .col-lg-8,
+                    .col-lg-9,
+                    .col-lg-10,
+                    .col-lg-11,
+                    .col-lg-12 {
+                        float: left;
+                    }
+
+                    .col-lg-12 {
+                        width: 100%;
+                    }
+
+                    .col-lg-11 {
+                        width: 91.66666667%;
+                    }
+
+                    .col-lg-10 {
+                        width: 83.33333333%;
+                    }
+
+                    .col-lg-9 {
+                        width: 75%;
+                    }
+
+                    .col-lg-8 {
+                        width: 66.66666667%;
+                    }
+
+                    .col-lg-7 {
+                        width: 58.33333333%;
+                    }
+
+                    .col-lg-6 {
+                        width: 50%;
+                    }
+
+                    .col-lg-5 {
+                        width: 41.66666667%;
+                    }
+
+                    .col-lg-4 {
+                        width: 33.33333333%;
+                    }
+
+                    .col-lg-3 {
+                        width: 25%;
+                    }
+
+                    .col-lg-2 {
+                        width: 16.66666667%;
+                    }
+
+                    .col-lg-1 {
+                        width: 8.33333333%;
+                    }
+
+                    .col-lg-pull-12 {
+                        right: 100%;
+                    }
+
+                    .col-lg-pull-11 {
+                        right: 91.66666667%;
+                    }
+
+                    .col-lg-pull-10 {
+                        right: 83.33333333%;
+                    }
+
+                    .col-lg-pull-9 {
+                        right: 75%;
+                    }
+
+                    .col-lg-pull-8 {
+                        right: 66.66666667%;
+                    }
+
+                    .col-lg-pull-7 {
+                        right: 58.33333333%;
+                    }
+
+                    .col-lg-pull-6 {
+                        right: 50%;
+                    }
+
+                    .col-lg-pull-5 {
+                        right: 41.66666667%;
+                    }
+
+                    .col-lg-pull-4 {
+                        right: 33.33333333%;
+                    }
+
+                    .col-lg-pull-3 {
+                        right: 25%;
+                    }
+
+                    .col-lg-pull-2 {
+                        right: 16.66666667%;
+                    }
+
+                    .col-lg-pull-1 {
+                        right: 8.33333333%;
+                    }
+
+                    .col-lg-pull-0 {
+                        right: auto;
+                    }
+
+                    .col-lg-push-12 {
+                        left: 100%;
+                    }
+
+                    .col-lg-push-11 {
+                        left: 91.66666667%;
+                    }
+
+                    .col-lg-push-10 {
+                        left: 83.33333333%;
+                    }
+
+                    .col-lg-push-9 {
+                        left: 75%;
+                    }
+
+                    .col-lg-push-8 {
+                        left: 66.66666667%;
+                    }
+
+                    .col-lg-push-7 {
+                        left: 58.33333333%;
+                    }
+
+                    .col-lg-push-6 {
+                        left: 50%;
+                    }
+
+                    .col-lg-push-5 {
+                        left: 41.66666667%;
+                    }
+
+                    .col-lg-push-4 {
+                        left: 33.33333333%;
+                    }
+
+                    .col-lg-push-3 {
+                        left: 25%;
+                    }
+
+                    .col-lg-push-2 {
+                        left: 16.66666667%;
+                    }
+
+                    .col-lg-push-1 {
+                        left: 8.33333333%;
+                    }
+
+                    .col-lg-push-0 {
+                        left: auto;
+                    }
+
+                    .col-lg-offset-12 {
+                        margin-left: 100%;
+                    }
+
+                    .col-lg-offset-11 {
+                        margin-left: 91.66666667%;
+                    }
+
+                    .col-lg-offset-10 {
+                        margin-left: 83.33333333%;
+                    }
+
+                    .col-lg-offset-9 {
+                        margin-left: 75%;
+                    }
+
+                    .col-lg-offset-8 {
+                        margin-left: 66.66666667%;
+                    }
+
+                    .col-lg-offset-7 {
+                        margin-left: 58.33333333%;
+                    }
+
+                    .col-lg-offset-6 {
+                        margin-left: 50%;
+                    }
+
+                    .col-lg-offset-5 {
+                        margin-left: 41.66666667%;
+                    }
+
+                    .col-lg-offset-4 {
+                        margin-left: 33.33333333%;
+                    }
+
+                    .col-lg-offset-3 {
+                        margin-left: 25%;
+                    }
+
+                    .col-lg-offset-2 {
+                        margin-left: 16.66666667%;
+                    }
+
+                    .col-lg-offset-1 {
+                        margin-left: 8.33333333%;
+                    }
+
+                    .col-lg-offset-0 {
+                        margin-left: 0;
+                    }
+                }
+            </style>
+        </div>
+        <div style="background:#fff;padding-bottom:20px;font-size:14px;">
+            <p style="text-align: center;margin-bottom:20px;padding:0px 20px">
+                您的支持是博主写作最大的动力，如果您喜欢我的文章，感觉我的文章对您有帮助，请狠狠点击下面的</p>
+            <p style="text-align: center;">
+                <a href="http://127.0.0.1:8000/ljq/donate">
+                    <input
+                        style="width: 310px; margin: 10px auto 0px; background-color: #f58a87; color: #ffffff; height: 40px; border: none; font-family: 'Microsoft Yahei'; font-size: 16px; letter-spacing: 2px;"
+                        type="button" value="我要小额赞助" />
+                </a>
+        </div>
+        <nav class="article-nav">
+            <span class="article-nav-prev">
+                <i class="fa fa-angle-double-left" style=""></i>
+                {% if prev_article == None %}
+                <a href="javascript:;">当前是最开始的文章</a>
+                {% else %}
+                <a href="{{ prev_article.slug }}" rel="prev">{{ prev_article.title }}</a>
+                {% endif %}
+            </span>
+            <span class="article-nav-next">
+                {% if next_article == None %}
+                <a href="javascript:;">当前文章是最后一篇文章</a>
+                {% else %}
+                <a href="{{ next_article.slug }}" rel="prev">{{ next_article.title }}</a>
+                {% endif %}
+                <i class="fa fa-angle-double-right"></i>
+            </span>
+        </nav>
+        <div id="respond" class="no_webshot" status="1">
+            <form method="post" id="commentform">
+                <div class="comt-title">
+                    <div class="comt-avatar pull-left">
+                        <img alt='' src='https://cuiqingcai.com/avatar/.png'
+                            class='avatar avatar-54 photo avatar-default' height='54' width='54' />
+                    </div>
+                    <div class="comt-author pull-left">
+                        {% if status == None %}
+                        发表我的评论
+                        {% else %}
+                        {{ status }}发表我的评论
+                        {% endif %}
+
+                    </div>
+                    <a id="cancel-comment-reply-link" class="pull-right" href="javascript:;">取消评论</a>
+                </div>
+                <div class="comt">
+                    <div class="comt-box">
+                        <input type="text" name="bhf" style="display:none" id="bhf">
+                        <input type="text" name="g_id" style="display:none" id="g_id">
+                        <textarea placeholder="写点什么..." class="input-block-level comt-area" name="w" id="comment"
+                            cols="100%" rows="3" tabindex="1"
+                            onkeydown="if(event.ctrlKey&amp;&amp;event.keyCode==13){document.getElementById('submit').click();return false};"></textarea>
+                        <textarea name="comment" cols="100%" rows="4" style="display:none"></textarea>
+                        <div class="comt-ctrl">
+                            <button class="btn btn-primary pull-right" type="button" name="submit" id="submit"
+                                tabindex="5">
+                                <i class="fa fa-check-square-o"></i> 提交评论
+                            </button>
+                            <div class="comt-tips pull-right">
+                                <input type='hidden' name='comment_post_ID' value='{{ article.id }}'
+                                    id='comment_post_ID' />
+                                <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+                                <p style="display: none;">
+                                    <input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce"
+                                        value="0a32ba2c25" />
+                                </p>
+                                <div id="tiantest_reply" style="margin-bottom: 14px; height:36px"></div>
+                                <input name="task_id" id="task_id" type="hidden" />
+                                <p style="display: none;">
+                                    <input type="hidden" id="ak_js" name="ak_js" value="55" />
+                                </p>
+                            </div>
+                            <span data-type="comment-insert-smilie" class="muted comt-smilie">
+                                <i class="fa fa-smile-o"></i> 表情
+                            </span>
+                            <span class="muted comt-mailme">
+                                <label for="comment_mail_notify" class="checkbox inline" style="padding-top:0">
+                                    <input type="checkbox" name="comment_mail_notify" id="comment_mail_notify"
+                                        value="comment_mail_notify" checked="checked" />有人回复时邮件通知我
+                                </label>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="postcomments">
+            <div id="comments">
+                <i class="fa fa-comments-o"></i>
+                <b> ({{ comment_list.count }})</b>个小伙伴在吐槽
+            </div>
+            <ol class="commentlist">
+            {% for comment in comment_list %}
+                <li class="comment byuser comment-author-ljq even thread-even depth-1" id="comment-270938" parent_id="{{ comment.id }}">
+                    <div class="c-avatar">
+                        <img alt=''
+                            data-original='/static/images/0.jpg'
+                            class='avatar avatar-54 photo' height='54' width='54' />
+                        <div class="c-main" id="div-comment-270938">{{ comment.content }}
+                            <div class="c-meta">
+                                <span class="c-author" style="color:red">ljq</span>{{ comment.comment_date|date:'Y-m-d H:i:s' }}{{ comment.comment_date|naturalday }}
+                                <a rel='nofollow' class='comment-reply-link'
+                                    href='javascript:;'
+                                    aria-label='回复给ljq' user_id= "{{ comment.author.id }}">回复</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <div class="children_pl">
+                {% for children in comment.childrencomment_set.all %}
+                    <li class="comment byuser comment-author-ljq even thread-even depth-1" id="comment-270938" style="width:80%;margin-left:50px">
+                        <div class="c-avatar">
+                            <img alt=''
+                                data-original='/static/images/0.jpg'
+                                class='avatar avatar-54 photo' height='54' width='54' />
+                            <div class="c-main" id="div-comment-270938">{{ children.content }}
+                                <div class="c-meta">
+                                    <span class="c-author" style="color:red">{{ children.author.name }}->{{ children.bhf_name }}</span>{{ children.comment_date|date:'Y-m-d H:i:s' }}{{ comment.comment_date|naturalday }}
+                                    <a rel='nofollow' class='comment-reply-link'
+                                        href='javascript:;'
+                                        aria-label='回复给{{ children.author.name }}' user_id= "{{ children.author.id }}">回复</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+                </div>   
+            {% endfor %}
+                <script>
+                       $(".comment-reply-link").map(function(k,value){
+                            $(this).on("click", function(){
+                                $(this).parents("li").after($("#respond"))
+                                var g_id = $(this).parents("div[class='children_pl']").prev().attr("parent_id")
+                                console.log(g_id)
+                                if (g_id){
+                                    $("#g_id").val(g_id)
+                                }else{
+                                    $("#g_id").val($(this).parents("li").attr("parent_id"))
+                                }
+                                console.log($(this).attr("user_id"))
+                                $("#bhf").val($(this).attr("user_id"))
+                                $("#cancel-comment-reply-link").css({"display":"block"})
+                                $("#respond").attr("status", "2")
+                            })
+                        })
+                        $("#cancel-comment-reply-link").on("click", function () {
+                            $("#bhf").val($(this).attr("user_id",""))
+                            $("nav").after($("#respond"))
+                            $("#g_id").val("")
+                            $(this).css("display", "none")
+                            $("#respond").attr("status", "1")
+                        })
+                </script>
+            </ol>
+            <div class="commentnav">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock  %}
+{% block right %}
+<aside class="sidebar" style="float:right">
+    <div class="widget widget_text">
+        <div class="textwidget">
+            <div class="social">
+                <a href="https://weibo.com/cuiqingcai" rel="external nofollow" title="新浪微博" target="_blank">
+                    <i class="sinaweibo fa fa-weibo"></i>
+                </a>
+                <a class="weixin">
+                    <i class="weixins fa fa-weixin"></i>
+                    <div class="weixin-popover">
+                        <div class="popover bottom in">
+                            <div class="arrow"></div>
+                            <div class="popover-title"></div>
+                            <div class="popover-content">
+                                <img src="https://cuiqingcai.com/wp-content/themes/Yusi/img/weixin.gif">
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=cqc@cuiqingcai.com"
+                    rel="external nofollow" title="Email" target="_blank">
+                    <i class="email fa fa-envelope-o"></i>
+                </a>
+                <a href="?feed=rss2" rel="external nofollow" target="_blank" title="订阅本站">
+                    <i class="rss fa fa-rss"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="widget widget_metaslider_widget">
+        <div class="title">
+            <h2>热门专题</h2>
+        </div>
+        <!-- meta slider -->
+        <div style="width: 100%;" class="metaslider metaslider-nivo metaslider-2698 ml-slider meta-slider">
+            <div id="metaslider_container_2698">
+                <div class='slider-wrapper theme-bar'>
+                    <div class='ribbon'></div>
+                    <div id='metaslider_2698' class='nivoSlider'>
+                        <a href="https://cuiqingcai.com/1052.html" target="_blank">
+                            <img src="https://qiniu.cuiqingcai.com/wp-content/uploads/2015/04/wallpaper_5263464.jpg"
+                                height="300" width="320" data-title="Python爬虫学习系列教程" title="Python爬虫学习系列教程"
+                                alt="Python爬虫学习系列教程" class="slider-2698 slide-1720" />
+                        </a>
+                        <a href="https://cuiqingcai.com/4320.html" target="_blank">
+                            <img src="https://qiniu.cuiqingcai.com/wp-content/uploads/2015/02/wallpaper_5226849-1.jpg"
+                                height="300" width="320" data-title="Python3爬虫学习视频教程" title="OpenGL绘图系列教程"
+                                alt="OpenGL绘图系列教程" class="slider-2698 slide-951" />
+                        </a>
+                        <a href="https://cuiqingcai.com/4352.html" target="_blank">
+                            <img src="https://qiniu.cuiqingcai.com/wp-content/uploads/2016/03/20-234x220.jpg"
+                                height="300" width="320" data-title="小白学爬虫系列教程" alt="" class="slider-2698 slide-4372" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                var metaslider_2698 = function ($) {
+                    $('#metaslider_2698').nivoSlider({
+                        boxCols: 7,
+                        boxRows: 5,
+                        pauseTime: 3000,
+                        effect: "random",
+                        controlNav: false,
+                        directionNav: true,
+                        pauseOnHover: true,
+                        animSpeed: 600,
+                        prevText: "&lt;",
+                        nextText: "&gt;",
+                        slices: 15,
+                        manualAdvance: false
+                    });
+                };
+                var timer_metaslider_2698 = function () {
+                    var slider = !window.jQuery ? window.setTimeout(timer_metaslider_2698, 100) : !jQuery.isReady ?
+                        window.setTimeout(timer_metaslider_2698, 1) : metaslider_2698(window.jQuery);
+                };
+                timer_metaslider_2698();
+            </script>
+        </div>
+        <!--// meta slider-->
+    </div>
+    <div class="widget d_postlist">
+        <div class="title">
+            <h2>猜你喜欢</h2>
+        </div>
+        <ul>
+            <li>
+                <a href="https://cuiqingcai.com/5413.html" title="[Python3网络爬虫开发实战] 1.8-爬虫框架的安装">
+                    <span class="thumbnail">
+                        <img src="https://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=https://qiniu.cuiqingcai.com/wp-content/uploads/2018/02/1.8.jpg&h=64&w=100&q=90&zc=1&ct=1"
+                            alt="[Python3网络爬虫开发实战] 1.8-爬虫框架的安装" />
+                    </span>
+                    <span class="text">[Python3网络爬虫开发实战] 1.8-爬虫框架的安装</span>
+                    <span class="muted">2018-01-25</span>
+                    <span class="muted">551评论</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://cuiqingcai.com/5432.html" title="[Python3网络爬虫开发实战] 1.8.4-Scrapy-Redis的安装">
+                    <span class="thumbnail">
+                        <img src="https://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=https://qiniu.cuiqingcai.com/wp-content/uploads/2018/02/1.8.4.jpg&h=64&w=100&q=90&zc=1&ct=1"
+                            alt="[Python3网络爬虫开发实战] 1.8.4-Scrapy-Redis的安装" />
+                    </span>
+                    <span class="text">[Python3网络爬虫开发实战] 1.8.4-Scrapy-Redis的安装</span>
+                    <span class="muted">2018-01-25</span>
+                    <span class="muted">370评论</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://cuiqingcai.com/4725.html" title="小白进阶之Scrapy第五篇（Scrapy-Splash配合CrawlSpider；瞎几把整的）">
+                    <span class="thumbnail">
+                        <img src="https://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=https://qiniu.cuiqingcai.com/wp-content/uploads/2016/11/QQ图片20161102215153.jpg&h=64&w=100&q=90&zc=1&ct=1"
+                            alt="小白进阶之Scrapy第五篇（Scrapy-Splash配合CrawlSpider；瞎几把整的）" />
+                    </span>
+                    <span class="text">小白进阶之Scrapy第五篇（Scrapy-Splash配合CrawlSpider；瞎几把整的）</span>
+                    <span class="muted">2017-07-12</span>
+                    <span class="muted">359评论</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://cuiqingcai.com/2227.html" title="WordPress从Apache迁移到Nginx过程">
+                    <span class="thumbnail">
+                        <img src="https://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=https://qiniu.cuiqingcai.com/wp-content/uploads/2015/11/wallpaper_5266633-e1447405155617.jpg&h=64&w=100&q=90&zc=1&ct=1"
+                            alt="WordPress从Apache迁移到Nginx过程" />
+                    </span>
+                    <span class="text">WordPress从Apache迁移到Nginx过程</span>
+                    <span class="muted">2015-11-13</span>
+                    <span class="muted">347评论</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://cuiqingcai.com/4804.html" title="HTTP 206 获取文件部分内容和范围请求">
+                    <span class="thumbnail">
+                        <img src="https://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=https://cuiqingcai.com/wp-content/themes/Yusi/img/pic/3.jpg&h=64&w=100&q=90&zc=1&ct=1"
+                            alt="HTTP 206 获取文件部分内容和范围请求" />
+                    </span>
+                    <span class="text">HTTP 206 获取文件部分内容和范围请求</span>
+                    <span class="muted">2017-09-15</span>
+                    <span class="muted">327评论</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://cuiqingcai.com/5560.html" title="[Python3网络爬虫开发实战] 5.1.1-TXT文本存储">
+                    <span class="thumbnail">
+                        <img src="https://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=https://qiniu.cuiqingcai.com/wp-content/uploads/2018/02/5.1.1.jpg&h=64&w=100&q=90&zc=1&ct=1"
+                            alt="[Python3网络爬虫开发实战] 5.1.1-TXT文本存储" />
+                    </span>
+                    <span class="text">[Python3网络爬虫开发实战] 5.1.1-TXT文本存储</span>
+                    <span class="muted">2018-01-29</span>
+                    <span class="muted">326评论</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://cuiqingcai.com/5965.html" title="【Python搞搞轻量博客】必要的知识">
+                    <span class="thumbnail">
+                        <img src="https://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=https://qiniu.cuiqingcai.com/wp-content/uploads/2018/04/timg.jpeg&h=64&w=100&q=90&zc=1&ct=1"
+                            alt="【Python搞搞轻量博客】必要的知识" />
+                    </span>
+                    <span class="text">【Python搞搞轻量博客】必要的知识</span>
+                    <span class="muted">2018-04-14</span>
+                    <span class="muted">326评论</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://cuiqingcai.com/1890.html" title="Winpcap网络编程一之前言，实验要求，实验目标">
+                    <span class="thumbnail">
+                        <img src="https://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=https://qiniu.cuiqingcai.com/wp-content/uploads/2015/07/wallpaper_5265748.jpg&h=64&w=100&q=90&zc=1&ct=1"
+                            alt="Winpcap网络编程一之前言，实验要求，实验目标" />
+                    </span>
+                    <span class="text">Winpcap网络编程一之前言，实验要求，实验目标</span>
+                    <span class="muted">2015-07-13</span>
+                    <span class="muted">322评论</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://cuiqingcai.com/2577.html" title="Python爬虫利器四之PhantomJS的用法">
+                    <span class="thumbnail">
+                        <img src="https://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=https://qiniu.cuiqingcai.com/wp-content/uploads/2016/03/26-e1458581127439.jpg&h=64&w=100&q=90&zc=1&ct=1"
+                            alt="Python爬虫利器四之PhantomJS的用法" />
+                    </span>
+                    <span class="text">Python爬虫利器四之PhantomJS的用法</span>
+                    <span class="muted">2016-03-22</span>
+                    <span class="muted">318评论</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://cuiqingcai.com/5456.html" title="[Python3网络爬虫开发实战] 1.9.5-Scrapyrt的安装">
+                    <span class="thumbnail">
+                        <img src="https://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=https://qiniu.cuiqingcai.com/wp-content/uploads/2018/02/1.9.5.jpg&h=64&w=100&q=90&zc=1&ct=1"
+                            alt="[Python3网络爬虫开发实战] 1.9.5-Scrapyrt的安装" />
+                    </span>
+                    <span class="text">[Python3网络爬虫开发实战] 1.9.5-Scrapyrt的安装</span>
+                    <span class="muted">2018-01-25</span>
+                    <span class="muted">297评论</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <aside>
+        {% endblock %}

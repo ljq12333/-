@@ -1,0 +1,171 @@
+{% extends 'admin/base.html' %}
+{% block title %}
+<title>修改文章</title>
+{% endblock %}
+{% block row %}
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-lg-10 col-md-offset-2 main" id="main">
+      <div class="row">
+        <form action="{% url 'admin:update_article' article.id %}" method="post" enctype="multipart/form-data" class="add-article-form" id="article">
+          <div class="col-md-9">
+            <h1 class="page-header">修改文章</h1>
+            <div class="form-group">
+              <label for="article-title" class="sr-only">标题</label>
+              <input type="text" id="article-title" name="title" class="form-control" placeholder="在此处输入标题" required autofocus autocomplete="off">
+            </div>
+            <div class="form-group">
+              <label for="article-content" class="sr-only">内容</label>
+              <script id="article-content" name="content" type="text/plain"></script>
+            </div>
+            <div class="add-article-box">
+              <h2 class="add-article-box-title"><span>描述</span></h2>
+              <div class="add-article-box-content">
+              	<textarea class="form-control" name="describe" autocomplete="off"></textarea>
+                <span class="prompt-text">描述是可选的手工创建的内容总结，并可以在网页描述中使用</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <h1 class="page-header">操作</h1>
+            <div class="add-article-box">
+              <div class="add-article-box-content">
+                <ul class="category-list">
+                  {% for category in category_list %}
+                    <li>
+                      <label>
+                        <input name="category" type="radio" value="{{ category.id }}" checked>
+                        {{ category.name }}
+                      </label>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+            <div class="add-article-box">
+              <h2 class="add-article-box-title"><span>标签</span></h2>
+              <div class="add-article-box-content">
+                <input type="text" class="form-control" placeholder="输入新标签" name="tags" autocomplete="off">
+                <span class="prompt-text">多个标签请用英文逗号,隔开</span> </div>
+            </div>
+            <div class="add-article-box">
+              <h2 class="add-article-box-title"><span>标题图片</span></h2>
+              <div class="add-article-box-content">
+                 <img src="/static/{{user}}.jpg   " width="263px" height="160px" id="img">
+              </div>
+              <div class="add-article-box-footer">
+                <a href="javascript:void(0);" class="file">上传图片
+                                <input type="file" name="title_img" accept="image/png,image/jpeg" id="file1"></a>
+              </div>
+            </div>
+            <script>
+                    $(function(){
+                        //$("#img").attr("src",he)
+                        $("#file1").on('change',function(){
+                            var file_info = $("input[type='file']")[0].files[0]
+                            console.log(file_info.name)
+                            $("#img").attr("src","/static/"+file_info.name+"")
+                            var reader = new FileReader();
+                            reader.readAsDataURL(file_info);
+                            reader.onloadend=function(e){
+                                $("#img").attr("src",e.target.result)
+                            }
+                        })
+                    }) 
+                </script>
+            <div class="add-article-box">
+              <h2 class="add-article-box-title"><span>发布</span></h2>
+              <div class="add-article-box-content">
+              	<p><label>状态：</label><span class="article-status-display">未发布</span></p>
+                <p><label>公开度：</label><input type="radio" name="visibility" value="0" checked/>公开 <input type="radio" name="visibility" value="1" />加密</p>
+                <p><label>发布于：</label><span class="article-time-display"><input style="border: none;" type="datetime" name="time" value="2016-01-09 17:29:37" /></span></p>
+              </div>
+              <div class="add-article-box-footer">
+                <input class="btn btn-primary" type="submit" name="" value="大大" style="display:none">
+                <input class="btn btn-primary" type="button" name="submit" value="修改" id="fb">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+</div>
+{% endblock %}
+{% block script %}
+<div class="modal fade user-select" id="areDeveloping" tabindex="-1" role="dialog" aria-labelledby="areDevelopingModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="areDevelopingModalLabel" style="cursor:default;">该功能正在日以继夜的开发中…</h4>
+      </div>
+      <div class="modal-body"> <img src="/static/admin/images/baoman/baoman_01.gif" alt="深思熟虑" />
+        <p style="padding:15px 15px 15px 100px; position:absolute; top:15px; cursor:default;">很抱歉，程序猿正在日以继夜的开发此功能，本程序将会在以后的版本中持续完善！</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">朕已阅</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/static/admin/js/bootstrap.min.js"></script> 
+<script src="/static/admin/js/admin-scripts.js"></script>
+<script src="/static/admin/lib/ueditor/ueditor.config.js"></script> 
+<script src="/static/admin/lib/ueditor/ueditor.all.min.js"> </script> 
+<script src="/static/admin/lib/ueditor/lang/zh-cn/zh-cn.js"></script>  
+<script id="uploadEditor" type="text/plain" style="display:none;"></script>
+<script type="text/javascript">
+var editor = UE.getEditor('article-content');
+window.onresize=function(){
+    window.location.reload();
+}
+var _uploadEditor;
+$(function () {
+    //重新实例化一个编辑器，防止在上面的editor编辑器中显示上传的图片或者文件
+    _uploadEditor = UE.getEditor('uploadEditor');
+    _uploadEditor.ready(function () {
+        //设置编辑器不可用
+        //_uploadEditor.setDisabled();
+        //隐藏编辑器，因为不会用到这个编辑器实例，所以要隐藏
+        _uploadEditor.hide();
+        //侦听图片上传
+        _uploadEditor.addListener('beforeInsertImage', function (t, arg) {
+            //将地址赋值给相应的input,只去第一张图片的路径
+            $("#pictureUpload").attr("value", arg[0].src);
+            //图片预览
+            //$("#imgPreview").attr("src", arg[0].src);
+        })
+        //侦听文件上传，取上传文件列表中第一个上传的文件的路径
+        _uploadEditor.addListener('afterUpfile', function (t, arg) {
+            $("#fileUpload").attr("value", _uploadEditor.options.filePath + arg[0].url);
+        })
+    });
+});
+</script>
+<script>
+    $(function(){
+      $("#fb").on('click',function(){
+          var bt_name = $("input[name='title']").val()      
+          var describe = $("textarea[name='describe']").val()
+          var title_img = $("input[name='title_img']").val()
+          var content = $("#ueditor_0").contents().find("body").text().length
+          if (bt_name==""||(bt_name.length<4)){
+              alert("请输入标题或者文章的标题长度必须大于4")
+              return false
+          }else if(content<100){
+            alert("文章字数不能小于100")
+            return false
+          }else if(describe==""){
+            alert("请输入文章的介绍")
+          }
+          $("input[type='submit']").click()
+      })
+    })
+</script>
+<script>
+    console.log("{{ article.body }}")
+    console.log("{% url 'admin:update_article' article.id %}")
+    window.onload = function(){
+        $("#ueditor_0").contents().find("body").html("{{ article.body|safe }}")
+        $("input[name='title']").val("{{ article.title|safe }}")
+        $("textarea[name='describe']").val("{{ article.summary }}")
+    }
+</script>
+{% endblock script %}

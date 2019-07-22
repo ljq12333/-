@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+            {% for big in big_category %}
+                {% if big.category_set.all.count != 0 %}
+                    {% for item in big.category_set.all %}
+                        {{ item.name }}
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+</body>
+</html>

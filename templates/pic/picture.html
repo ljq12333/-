@@ -1,0 +1,1333 @@
+﻿
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="bookmark" type="image/x-icon" href="/static/img/favicon.ico"/>
+    <link rel="shortcut icon" href="/static/img/favicon.ico">
+    <title>照片墙 - 杜赛的个人网站</title>
+
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/all.min.css" rel="stylesheet">
+    <link href="../static/css/hover-min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/monokai.css">
+    <link rel="stylesheet" href="../static/css/personal_style.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="../static/js/511d944940f844de8933529b153e429e.js"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-123957004-1');
+    </script>
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?f1ad3aa5133d41495a918468cab623d4";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+</head>
+<body>
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/popper.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/layer.js"></script>
+
+
+<!-- Author: 鹦鹉 -->
+<!-- https://ezbox.idv.tw/131/back-to-top-button-without-images -->
+<button type="button" id="BackTop" class="toTop-arrow hvr-bob" style="z-index: 10;"></button>
+<script>
+    $(function () {
+        $('#BackTop').click(function () {
+            $('html,body').animate({scrollTop: 0}, 333);
+        });
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 300) {
+                $('#BackTop').fadeIn(222);
+            } else {
+                $('#BackTop').stop().fadeOut(222);
+            }
+        }).scroll();
+    });
+</script>
+
+<style>
+    /* 56px */
+    .toTop-arrow {
+        width: 3.5rem;
+        height: 3.5rem;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        border-radius: 33%;
+        opacity: 0.7;
+        background: black;
+        cursor: pointer;
+        position: fixed;
+        right: 1.5rem;
+        bottom: 1.5rem;
+        display: none;
+    }
+
+    .toTop-arrow::before, .toTop-arrow::after {
+        width: 31px;
+        height: 7px;
+        border-radius: 3px;
+        background: orange;
+        position: absolute;
+        content: "";
+    }
+
+    .toTop-arrow::before {
+        transform: rotate(-45deg) translate(0, -50%);
+        left: 0.4rem;
+    }
+
+    .toTop-arrow::after {
+        transform: rotate(45deg) translate(0, -50%);
+        right: 0.4rem;
+    }
+
+    .toTop-arrow:focus {
+        outline: none;
+    }
+</style>
+     
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- 导航 -->
+    <a class="navbar-brand hvr-grow-rotate" href="/" style="font-size: 1.2em;">
+        杜赛的个人网站
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="
+                nav-item
+                
+                ">
+                <a class="nav-link mr-2" href="/">
+                    文章
+                </a>
+            </li>
+            <li class="
+                nav-item
+                
+                ">
+                <a class="nav-link mr-2" href="/course/">
+                    教程
+                </a>
+            </li>
+            <li class="
+                nav-item
+                
+                ">
+                <a class="nav-link mr-2" href="/book/">
+                    知识
+                </a>
+            </li>
+            <li class="
+                nav-item
+                
+                active
+                
+                ">
+                <a class="nav-link mr-2" href="/album/">
+                    照片墙
+                </a>
+            </li>
+            <li class="
+                nav-item
+                
+                ">
+                <a class="nav-link mr-2" href="/vlog/">
+                    视频
+                </a>
+            </li>
+            <li class="
+                nav-item
+                
+                ">
+                <a class="nav-link mr-2" href="/aboutme/">
+                    关于
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-md-auto" style="margin: -5px 0 -5px 0;">
+
+            <!-- 搜索框 -->
+            <!-- <form role="search" class="form-inline my-2 my-lg-0 breath-box" method="get" id="searchform" action="">
+                <input style=" background-color: #dddddd" type="search" aria-label="Search" name="q" placeholder="搜索文章.." required class="form-control mr-sm-2">
+            </form> -->
+
+
+            <!-- 用户下拉条avatar -->
+            
+                <li class="nav-item">
+                    <a href="/accounts/login/" class="nav-link">
+                        登录
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+
+
+    <div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="logout" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <h5 class="modal-body">
+                    确认退出吗？
+                </h5>
+                <div class="modal-footer">
+                    <form method="post" action="/accounts/logout/">
+                        <input type='hidden' name='csrfmiddlewaretoken' value='o0ElA1ufnd8ZJYqqLjc84aTBvIuynOWaVb6r1Na5OeGEieobkQD4bGXyPsx1b71F' />
+                        <button type="submit" class="btn btn-danger">退出登录</button>
+                    </form>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</nav>
+<div id="wrapper">
+    
+    <div class="container">
+        <div class="row mt-3">
+            <div class="d-block d-sm-none mt-2 alert alert-warning">
+                <i class="fas fa-exclamation-triangle"></i>高清图片会消耗较多流量
+            </div>
+            <div class="card-columns">
+                
+                    <div class="card hvr-float-shadow" style="word-break: break-all;">
+                        <!-- Button trigger modal -->
+                        <a href="javascript:"
+                           data-toggle="modal"
+                           data-target="#img_7"
+                           class="card-link text-muted"
+                        >
+                            <div style="overflow: hidden">
+                                <img src="
+                                
+                                http://blog.dusaiphoto.com/%E4%B9%9D%E5%AF%A8%E6%B2%9F01.jpg
+                                
+                                "
+                                     style="max-width: 100%; transition-duration: 1s;"
+                                     alt="图片"
+                                     class="card-img-top hvr-grow"
+                                >
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    雪与海子
+                                </h5>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="img_7" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img src="
+                                        
+                                        http://blog.dusaiphoto.com/%E4%B9%9D%E5%AF%A8%E6%B2%9F01.jpg
+                                        
+                                        "
+                                         style="max-width: 100%"
+                                         alt="img"
+                                    >
+                                </div>
+                                <div class="modal-body text-muted">
+                                    <p>
+                                        冬天没有阳光的照射，九寨沟的海子失去了颜色，暗淡又不好看。
+但如果下了雪，那就不一样了。白色世界，海子平静又清澈见底。这是在秋季见不到的。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card hvr-float-shadow" style="word-break: break-all;">
+                        <!-- Button trigger modal -->
+                        <a href="javascript:"
+                           data-toggle="modal"
+                           data-target="#img_8"
+                           class="card-link text-muted"
+                        >
+                            <div style="overflow: hidden">
+                                <img src="
+                                
+                                http://blog.dusaiphoto.com/%E4%B9%9D%E5%AF%A8%E6%B2%9F02.jpg
+                                
+                                "
+                                     style="max-width: 100%; transition-duration: 1s;"
+                                     alt="图片"
+                                     class="card-img-top hvr-grow"
+                                >
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    水墨
+                                </h5>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="img_8" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img src="
+                                        
+                                        http://blog.dusaiphoto.com/%E4%B9%9D%E5%AF%A8%E6%B2%9F02.jpg
+                                        
+                                        "
+                                         style="max-width: 100%"
+                                         alt="img"
+                                    >
+                                </div>
+                                <div class="modal-body text-muted">
+                                    <p>
+                                        长海结了冰，白的刺眼。山也变了冻土，黑的幽深。雪里九寨，仿佛水墨之中。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card hvr-float-shadow" style="word-break: break-all;">
+                        <!-- Button trigger modal -->
+                        <a href="javascript:"
+                           data-toggle="modal"
+                           data-target="#img_9"
+                           class="card-link text-muted"
+                        >
+                            <div style="overflow: hidden">
+                                <img src="
+                                
+                                http://blog.dusaiphoto.com/%E5%B7%B4%E5%8E%98%E5%B2%9B.jpg
+                                
+                                "
+                                     style="max-width: 100%; transition-duration: 1s;"
+                                     alt="图片"
+                                     class="card-img-top hvr-grow"
+                                >
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    海神庙
+                                </h5>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="img_9" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img src="
+                                        
+                                        http://blog.dusaiphoto.com/%E5%B7%B4%E5%8E%98%E5%B2%9B.jpg
+                                        
+                                        "
+                                         style="max-width: 100%"
+                                         alt="img"
+                                    >
+                                </div>
+                                <div class="modal-body text-muted">
+                                    <p>
+                                        远远看到海神庙，浪配合着涌进海湾，层层叠叠。远远感受海洋的凶狠与温柔。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card hvr-float-shadow" style="word-break: break-all;">
+                        <!-- Button trigger modal -->
+                        <a href="javascript:"
+                           data-toggle="modal"
+                           data-target="#img_10"
+                           class="card-link text-muted"
+                        >
+                            <div style="overflow: hidden">
+                                <img src="
+                                
+                                http://blog.dusaiphoto.com/%E6%B5%B7%E5%8D%97%E4%B8%89%E4%BA%9A.jpg
+                                
+                                "
+                                     style="max-width: 100%; transition-duration: 1s;"
+                                     alt="图片"
+                                     class="card-img-top hvr-grow"
+                                >
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    海鲜大餐
+                                </h5>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="img_10" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img src="
+                                        
+                                        http://blog.dusaiphoto.com/%E6%B5%B7%E5%8D%97%E4%B8%89%E4%BA%9A.jpg
+                                        
+                                        "
+                                         style="max-width: 100%"
+                                         alt="img"
+                                    >
+                                </div>
+                                <div class="modal-body text-muted">
+                                    <p>
+                                        大海之南，三亚。在沙滩玩累了，晚上找一家靠谱大排档，吃海鲜是完全的享受。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card hvr-float-shadow" style="word-break: break-all;">
+                        <!-- Button trigger modal -->
+                        <a href="javascript:"
+                           data-toggle="modal"
+                           data-target="#img_11"
+                           class="card-link text-muted"
+                        >
+                            <div style="overflow: hidden">
+                                <img src="
+                                
+                                http://blog.dusaiphoto.com/%E5%BA%B7%E5%AE%9A.jpg
+                                
+                                "
+                                     style="max-width: 100%; transition-duration: 1s;"
+                                     alt="图片"
+                                     class="card-img-top hvr-grow"
+                                >
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    折多，海拔5000
+                                </h5>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="img_11" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img src="
+                                        
+                                        http://blog.dusaiphoto.com/%E5%BA%B7%E5%AE%9A.jpg
+                                        
+                                        "
+                                         style="max-width: 100%"
+                                         alt="img"
+                                    >
+                                </div>
+                                <div class="modal-body text-muted">
+                                    <p>
+                                        不知为何，前些年出门经常到特冷的地方。这是在康定，折多山上。下了大雪，山路也险峻，堵车连绵几公里。期间爬上了折多山顶，遥望心中也开阔起来。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card hvr-float-shadow" style="word-break: break-all;">
+                        <!-- Button trigger modal -->
+                        <a href="javascript:"
+                           data-toggle="modal"
+                           data-target="#img_12"
+                           class="card-link text-muted"
+                        >
+                            <div style="overflow: hidden">
+                                <img src="
+                                
+                                http://blog.dusaiphoto.com/%E7%B1%B3%E5%85%B0.jpg
+                                
+                                "
+                                     style="max-width: 100%; transition-duration: 1s;"
+                                     alt="图片"
+                                     class="card-img-top hvr-grow"
+                                >
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    米兰大教堂
+                                </h5>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="img_12" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img src="
+                                        
+                                        http://blog.dusaiphoto.com/%E7%B1%B3%E5%85%B0.jpg
+                                        
+                                        "
+                                         style="max-width: 100%"
+                                         alt="img"
+                                    >
+                                </div>
+                                <div class="modal-body text-muted">
+                                    <p>
+                                        米兰大教堂外，阳光正好。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card hvr-float-shadow" style="word-break: break-all;">
+                        <!-- Button trigger modal -->
+                        <a href="javascript:"
+                           data-toggle="modal"
+                           data-target="#img_13"
+                           class="card-link text-muted"
+                        >
+                            <div style="overflow: hidden">
+                                <img src="
+                                
+                                http://blog.dusaiphoto.com/%E5%A8%81%E5%B0%BC%E6%96%AF.jpg
+                                
+                                "
+                                     style="max-width: 100%; transition-duration: 1s;"
+                                     alt="图片"
+                                     class="card-img-top hvr-grow"
+                                >
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    威尼斯的“的士”
+                                </h5>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="img_13" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img src="
+                                        
+                                        http://blog.dusaiphoto.com/%E5%A8%81%E5%B0%BC%E6%96%AF.jpg
+                                        
+                                        "
+                                         style="max-width: 100%"
+                                         alt="img"
+                                    >
+                                </div>
+                                <div class="modal-body text-muted">
+                                    <p>
+                                        这个小船叫贡多拉。威尼斯的交通已经被现代小轮船取代，而贡多拉保留下来，供游客们乘坐游览这座水中小城。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card hvr-float-shadow" style="word-break: break-all;">
+                        <!-- Button trigger modal -->
+                        <a href="javascript:"
+                           data-toggle="modal"
+                           data-target="#img_14"
+                           class="card-link text-muted"
+                        >
+                            <div style="overflow: hidden">
+                                <img src="
+                                
+                                http://blog.dusaiphoto.com/%E5%B7%B4%E9%BB%8E.jpg
+                                
+                                "
+                                     style="max-width: 100%; transition-duration: 1s;"
+                                     alt="图片"
+                                     class="card-img-top hvr-grow"
+                                >
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    你与铁塔
+                                </h5>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="img_14" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img src="
+                                        
+                                        http://blog.dusaiphoto.com/%E5%B7%B4%E9%BB%8E.jpg
+                                        
+                                        "
+                                         style="max-width: 100%"
+                                         alt="img"
+                                    >
+                                </div>
+                                <div class="modal-body text-muted">
+                                    <p>
+                                        远远的埃菲尔铁塔。这次欧洲之行去了法国和意大利，公交、地铁、火车、小船全都坐了个遍。说不上惊心动魄，但也是几十年后都可以想起的回忆往事。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card hvr-float-shadow" style="word-break: break-all;">
+                        <!-- Button trigger modal -->
+                        <a href="javascript:"
+                           data-toggle="modal"
+                           data-target="#img_15"
+                           class="card-link text-muted"
+                        >
+                            <div style="overflow: hidden">
+                                <img src="
+                                
+                                http://blog.dusaiphoto.com/%E6%A1%83%E5%9D%AA%E7%BE%8C%E5%AF%A8.jpg
+                                
+                                "
+                                     style="max-width: 100%; transition-duration: 1s;"
+                                     alt="图片"
+                                     class="card-img-top hvr-grow"
+                                >
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    战争迷宫
+                                </h5>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="img_15" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img src="
+                                        
+                                        http://blog.dusaiphoto.com/%E6%A1%83%E5%9D%AA%E7%BE%8C%E5%AF%A8.jpg
+                                        
+                                        "
+                                         style="max-width: 100%"
+                                         alt="img"
+                                    >
+                                </div>
+                                <div class="modal-body text-muted">
+                                    <p>
+                                        桃坪羌寨很有意思，这个寨子是人民生活的地方，也是战斗的堡垒。坚固狭窄的石墙围城迷宫般的堡垒，抵御强大的外敌。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card hvr-float-shadow" style="word-break: break-all;">
+                        <!-- Button trigger modal -->
+                        <a href="javascript:"
+                           data-toggle="modal"
+                           data-target="#img_16"
+                           class="card-link text-muted"
+                        >
+                            <div style="overflow: hidden">
+                                <img src="
+                                
+                                http://blog.dusaiphoto.com/%E8%A5%BF%E5%AE%89.jpg
+                                
+                                "
+                                     style="max-width: 100%; transition-duration: 1s;"
+                                     alt="图片"
+                                     class="card-img-top hvr-grow"
+                                >
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    白与黑
+                                </h5>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="img_16" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img src="
+                                        
+                                        http://blog.dusaiphoto.com/%E8%A5%BF%E5%AE%89.jpg
+                                        
+                                        "
+                                         style="max-width: 100%"
+                                         alt="img"
+                                    >
+                                </div>
+                                <div class="modal-body text-muted">
+                                    <p>
+                                        西安鼓楼，白天和夜晚呈现不一样的外观。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card hvr-float-shadow" style="word-break: break-all;">
+                        <!-- Button trigger modal -->
+                        <a href="javascript:"
+                           data-toggle="modal"
+                           data-target="#img_17"
+                           class="card-link text-muted"
+                        >
+                            <div style="overflow: hidden">
+                                <img src="
+                                
+                                http://blog.dusaiphoto.com/%E8%A5%BF%E5%AE%892.jpg
+                                
+                                "
+                                     style="max-width: 100%; transition-duration: 1s;"
+                                     alt="图片"
+                                     class="card-img-top hvr-grow"
+                                >
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    唱片
+                                </h5>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="img_17" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img src="
+                                        
+                                        http://blog.dusaiphoto.com/%E8%A5%BF%E5%AE%892.jpg
+                                        
+                                        "
+                                         style="max-width: 100%"
+                                         alt="img"
+                                    >
+                                </div>
+                                <div class="modal-body text-muted">
+                                    <p>
+                                        西安很神奇，是文化和流行交融的城市。所以才有这样的画面：古老的砖墙上，贴满了国外的黑胶唱片海报。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card hvr-float-shadow" style="word-break: break-all;">
+                        <!-- Button trigger modal -->
+                        <a href="javascript:"
+                           data-toggle="modal"
+                           data-target="#img_18"
+                           class="card-link text-muted"
+                        >
+                            <div style="overflow: hidden">
+                                <img src="
+                                
+                                http://blog.dusaiphoto.com/%E6%AF%95%E6%A3%9A%E6%B2%9F.jpg
+                                
+                                "
+                                     style="max-width: 100%; transition-duration: 1s;"
+                                     alt="图片"
+                                     class="card-img-top hvr-grow"
+                                >
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    五彩的山
+                                </h5>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="img_18" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img src="
+                                        
+                                        http://blog.dusaiphoto.com/%E6%AF%95%E6%A3%9A%E6%B2%9F.jpg
+                                        
+                                        "
+                                         style="max-width: 100%"
+                                         alt="img"
+                                    >
+                                </div>
+                                <div class="modal-body text-muted">
+                                    <p>
+                                        来的时候是夏天，毕棚沟的树叶已经多彩起来。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card hvr-float-shadow" style="word-break: break-all;">
+                        <!-- Button trigger modal -->
+                        <a href="javascript:"
+                           data-toggle="modal"
+                           data-target="#img_19"
+                           class="card-link text-muted"
+                        >
+                            <div style="overflow: hidden">
+                                <img src="
+                                
+                                http://blog.dusaiphoto.com/%E6%AF%95%E6%A3%9A%E6%B2%9F2.jpg
+                                
+                                "
+                                     style="max-width: 100%; transition-duration: 1s;"
+                                     alt="图片"
+                                     class="card-img-top hvr-grow"
+                                >
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    桥
+                                </h5>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="img_19" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img src="
+                                        
+                                        http://blog.dusaiphoto.com/%E6%AF%95%E6%A3%9A%E6%B2%9F2.jpg
+                                        
+                                        "
+                                         style="max-width: 100%"
+                                         alt="img"
+                                    >
+                                </div>
+                                <div class="modal-body text-muted">
+                                    <p>
+                                        虽说是夏天，也架不住高山。小桥流水，远胜钢筋水泥的美。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card hvr-float-shadow" style="word-break: break-all;">
+                        <!-- Button trigger modal -->
+                        <a href="javascript:"
+                           data-toggle="modal"
+                           data-target="#img_20"
+                           class="card-link text-muted"
+                        >
+                            <div style="overflow: hidden">
+                                <img src="
+                                
+                                http://blog.dusaiphoto.com/%E9%98%86%E4%B8%AD.jpg
+                                
+                                "
+                                     style="max-width: 100%; transition-duration: 1s;"
+                                     alt="图片"
+                                     class="card-img-top hvr-grow"
+                                >
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    巷子里的醋
+                                </h5>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="img_20" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img src="
+                                        
+                                        http://blog.dusaiphoto.com/%E9%98%86%E4%B8%AD.jpg
+                                        
+                                        "
+                                         style="max-width: 100%"
+                                         alt="img"
+                                    >
+                                </div>
+                                <div class="modal-body text-muted">
+                                    <p>
+                                        阆中是四川的有名的古城，很多古色古香的巷子，特适合拍照。这里的保宁醋也很有名，古城里都是醋味，口水都流了一路。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card hvr-float-shadow" style="word-break: break-all;">
+                        <!-- Button trigger modal -->
+                        <a href="javascript:"
+                           data-toggle="modal"
+                           data-target="#img_21"
+                           class="card-link text-muted"
+                        >
+                            <div style="overflow: hidden">
+                                <img src="
+                                
+                                http://blog.dusaiphoto.com/%E6%BE%B3%E9%97%A80.jpg
+                                
+                                "
+                                     style="max-width: 100%; transition-duration: 1s;"
+                                     alt="图片"
+                                     class="card-img-top hvr-grow"
+                                >
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    澳门小街
+                                </h5>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="img_21" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img src="
+                                        
+                                        http://blog.dusaiphoto.com/%E6%BE%B3%E9%97%A80.jpg
+                                        
+                                        "
+                                         style="max-width: 100%"
+                                         alt="img"
+                                    >
+                                </div>
+                                <div class="modal-body text-muted">
+                                    <p>
+                                        澳门地方虽小，却很有味道。穿行其中，感受除了赌城以外的文化。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card hvr-float-shadow" style="word-break: break-all;">
+                        <!-- Button trigger modal -->
+                        <a href="javascript:"
+                           data-toggle="modal"
+                           data-target="#img_22"
+                           class="card-link text-muted"
+                        >
+                            <div style="overflow: hidden">
+                                <img src="
+                                
+                                http://blog.dusaiphoto.com/%E9%A6%99%E6%B8%AF0.jpg
+                                
+                                "
+                                     style="max-width: 100%; transition-duration: 1s;"
+                                     alt="图片"
+                                     class="card-img-top hvr-grow"
+                                >
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    港铁
+                                </h5>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="img_22" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img src="
+                                        
+                                        http://blog.dusaiphoto.com/%E9%A6%99%E6%B8%AF0.jpg
+                                        
+                                        "
+                                         style="max-width: 100%"
+                                         alt="img"
+                                    >
+                                </div>
+                                <div class="modal-body text-muted">
+                                    <p>
+                                        香港每个地铁站都有不一样的颜色。或许这里是照片最好看的景点了。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card hvr-float-shadow" style="word-break: break-all;">
+                        <!-- Button trigger modal -->
+                        <a href="javascript:"
+                           data-toggle="modal"
+                           data-target="#img_6"
+                           class="card-link text-muted"
+                        >
+                            <div style="overflow: hidden">
+                                <img src="
+                                
+                                /media/image/album/20180927/2015.10qingmai.jpg
+                                
+                                "
+                                     style="max-width: 100%; transition-duration: 1s;"
+                                     alt="图片"
+                                     class="card-img-top hvr-grow"
+                                >
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    在清迈的寺庙中穿行
+                                </h5>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="img_6" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img src="
+                                        
+                                        /media/image/album/20180927/2015.10qingmai.jpg
+                                        
+                                        "
+                                         style="max-width: 100%"
+                                         alt="img"
+                                    >
+                                </div>
+                                <div class="modal-body text-muted">
+                                    <p>
+                                        泰国清迈是个小清新的城市。市中心五步一小庙，十步一大庙，街边处处可见当地居民供奉的神邸。在这个烈日暴晒的季节，穿行在各式小乘佛教的建筑群中，步伐也轻盈了一些。然而也并没有得到心灵上的净化，那都是骗人的。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card hvr-float-shadow" style="word-break: break-all;">
+                        <!-- Button trigger modal -->
+                        <a href="javascript:"
+                           data-toggle="modal"
+                           data-target="#img_5"
+                           class="card-link text-muted"
+                        >
+                            <div style="overflow: hidden">
+                                <img src="
+                                
+                                /media/image/album/20180907/2018.08maldives1.jpg
+                                
+                                "
+                                     style="max-width: 100%; transition-duration: 1s;"
+                                     alt="图片"
+                                     class="card-img-top hvr-grow"
+                                >
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    坠落
+                                </h5>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="img_5" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img src="
+                                        
+                                        /media/image/album/20180907/2018.08maldives1.jpg
+                                        
+                                        "
+                                         style="max-width: 100%"
+                                         alt="img"
+                                    >
+                                </div>
+                                <div class="modal-body text-muted">
+                                    <p>
+                                        正午的阳光晃得我睁不开眼，在缓缓下坠的背后上映射出波浪的影子。时间仿佛停止了，一切都陷入了空灵。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card hvr-float-shadow" style="word-break: break-all;">
+                        <!-- Button trigger modal -->
+                        <a href="javascript:"
+                           data-toggle="modal"
+                           data-target="#img_4"
+                           class="card-link text-muted"
+                        >
+                            <div style="overflow: hidden">
+                                <img src="
+                                
+                                /media/image/album/20180825/2018.08maldives0.jpg
+                                
+                                "
+                                     style="max-width: 100%; transition-duration: 1s;"
+                                     alt="图片"
+                                     class="card-img-top hvr-grow"
+                                >
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    马尔代夫水屋廊桥
+                                </h5>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="img_4" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img src="
+                                        
+                                        /media/image/album/20180825/2018.08maldives0.jpg
+                                        
+                                        "
+                                         style="max-width: 100%"
+                                         alt="img"
+                                    >
+                                </div>
+                                <div class="modal-body text-muted">
+                                    <p>
+                                        这里是马尔代夫水屋前的廊桥。天是蓝的，海是碧的，微风习习，真是梦中的天堂。去的时候是8月，太阳暴晒真的热，不过在美景的震撼下也完全不怕晒黑了，想起来了就坐在地上拍几张，怎么拍都梦幻。人生一定要来一次马尔代夫。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card hvr-float-shadow" style="word-break: break-all;">
+                        <!-- Button trigger modal -->
+                        <a href="javascript:"
+                           data-toggle="modal"
+                           data-target="#img_2"
+                           class="card-link text-muted"
+                        >
+                            <div style="overflow: hidden">
+                                <img src="
+                                
+                                /media/image/album/20180820/2015.04%E5%B3%A8%E7%9C%89.jpg
+                                
+                                "
+                                     style="max-width: 100%; transition-duration: 1s;"
+                                     alt="图片"
+                                     class="card-img-top hvr-grow"
+                                >
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    胶卷、镜头盖和藤条桌
+                                </h5>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="img_2" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img src="
+                                        
+                                        /media/image/album/20180820/2015.04%E5%B3%A8%E7%9C%89.jpg
+                                        
+                                        "
+                                         style="max-width: 100%"
+                                         alt="img"
+                                    >
+                                </div>
+                                <div class="modal-body text-muted">
+                                    <p>
+                                        2015年4月，在峨眉半山腰的小茶馆里休息。那时候还算是我摄影刚入门的阶段，啥都不懂，在网上看了几篇妖言惑众的帖子，入了胶卷机。操作起来虽然繁琐，而且还要心心念念地等着冲洗，但是质感真是好到没话说。一同前往峨眉的还有丢丢同学，那是也是才在一起没多久，必须要出去旅个游建立感情的时候。这张照片，作为相册的第一张，最合适不过。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <br/>
+    <script>
+        $('#layer_warning').on('mouseenter', function () {
+            this.index = layer.tips('高清图片可能会消耗较多流量', this, {
+                time: -1,
+                maxWidth: 280,
+                tips: [3, 'black']
+            });
+        }).on('mouseleave', function () {
+            layer.close(this.index);
+        });
+    </script>
+
+    <div id="push"></div>
+</div>
+
+<nav class="navbar navbar-dark bg-dark mb-0" id="nav-footer">
+    <div class="row col justify-content-center">
+        <h3 class="mr-3">
+            <a href="mailto:dusaiphoto@foxmail.com" class="hvr-icon-grow no-underline">
+                <i class="fas fa-envelope hvr-icon" style="color: lightskyblue;" id="layer_email"></i>
+            </a>
+        </h3>
+        <h3 class="mr-3">
+            <a href="https://github.com/stacklens" style="color: #f0c674;" target="_blank" class="hvr-icon-grow no-underline">
+                <i class="fab fa-github hvr-icon" id="layer_github"></i>
+            </a>
+        </h3>
+        <h3 class="mr-3">
+            <a href="//weibo.com/saisaixuezhang" style="color: indianred;" target="_blank" class="hvr-icon-grow no-underline">
+                <i class="fab fa-weibo hvr-icon" id="layer_weibo"></i>
+            </a>
+        </h3>
+        <h3>
+            <a href="/aboutme/#wechart_qr" style="color: yellowgreen;" class="hvr-icon-grow no-underline">
+                <i class="fab fa-weixin hvr-icon" id="footer_wechart"></i>
+            </a>
+        </h3>
+    </div>
+
+    <div class="row col-12 justify-content-center">
+        <div style="text-align: center; color: lightgrey;">
+            <p class="mb-0">CopyRight &copy; 2018 ~ 2019 杜赛的个人网站</p>
+            <p class="mb-0">Powered by
+                <a href="https://www.djangoproject.com/" target="_blank">
+                    Django
+                </a> &
+                <a target="_blank" href="https://getbootstrap.com/">
+                    Bootstrap
+                </a>
+                <span class="mb-0">&nbsp;蜀ICP备18018263号-1</span>
+            </p>
+        </div>
+    </div>
+</nav>
+<script>
+    $('#layer_email').on('mouseenter', function () {
+        this.index = layer.tips('给博主发邮件', this, {
+            time: -1,
+            maxWidth: 280,
+            tips: [1, 'lightskyblue']
+        });
+    }).on('mouseleave', function () {
+        layer.close(this.index);
+    });
+
+    $('#layer_weibo').on('mouseenter', function () {
+        this.index = layer.tips('关注博主微博', this, {
+            time: -1,
+            maxWidth: 280,
+            tips: [1, 'indianred']
+        });
+    }).on('mouseleave', function () {
+        layer.close(this.index);
+    });
+
+    $('#layer_github').on('mouseenter', function () {
+        this.index = layer.tips('在GitHub查看博主代码', this, {
+            time: -1,
+            maxWidth: 280,
+            tips: [1, '#f0c674']
+        });
+    }).on('mouseleave', function () {
+        layer.close(this.index);
+    });
+
+    $('#footer_wechart').on('mouseenter', function () {
+        this.index = layer.tips('博主微博二维码', this, {
+            time: -1,
+            maxWidth: 280,
+            tips: [1, 'yellowgreen']
+        });
+    }).on('mouseleave', function () {
+        layer.close(this.index);
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>
